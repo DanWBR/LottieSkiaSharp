@@ -14,7 +14,7 @@
 using System;
 using System.Threading;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public abstract class ValueAnimator : Animator, IDisposable
     {

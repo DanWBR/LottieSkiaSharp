@@ -13,7 +13,7 @@
 //   limitations under the License.
 using SkiaSharp;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     internal interface IDrawingContent : IContent
     {

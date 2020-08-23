@@ -14,7 +14,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LottieUWP.Model
+namespace LottieSharp.Model
 {
     /// <summary>
     /// Defines which content to target.

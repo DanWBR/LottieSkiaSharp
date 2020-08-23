@@ -15,11 +15,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using SkiaSharp;
-using LottieUWP.Value;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Model.Content;
+using LottieSharp.Value;
+using LottieSharp.Model.Animatable;
+using LottieSharp.Model.Content;
 
-namespace LottieUWP.Model.Layer
+namespace LottieSharp.Model.Layer
 {
     public class Layer
     {

@@ -17,7 +17,7 @@ using System.Numerics;
 using System.Text;
 using SkiaSharp;
 
-namespace LottieUWP.Expansion
+namespace LottieSharp.Expansion
 {
     static class SkRectExpansion
     {

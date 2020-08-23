@@ -256,7 +256,7 @@ namespace LottieUWP
             {
                 if (!closed)
                 {
-                    //canvasPathBuilder.Close();
+                    canvasPathBuilder.Close();
                 }
                 else
                 {

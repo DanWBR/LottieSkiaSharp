@@ -14,7 +14,7 @@
 using System;
 using SkiaSharp;
 
-namespace LottieUWP.Model
+namespace LottieSharp.Model
 {
     public class DocumentData
     {

@@ -13,10 +13,10 @@
 //   limitations under the License.
 using System.Collections.Generic;
 using System.Text;
-using LottieUWP.Value;
-using LottieUWP.Animation.Keyframe;
+using LottieSharp.Value;
+using LottieSharp.Animation.Keyframe;
 
-namespace LottieUWP.Model.Animatable
+namespace LottieSharp.Model.Animatable
 {
     public abstract class BaseAnimatableValue<TV, TO> : IAnimatableValue<TV, TO>
     {

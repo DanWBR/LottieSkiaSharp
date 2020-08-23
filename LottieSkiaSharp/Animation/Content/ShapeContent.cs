@@ -13,12 +13,12 @@
 //   limitations under the License.
 using System;
 using System.Collections.Generic;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Model.Content;
-using LottieUWP.Model.Layer;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Model.Content;
+using LottieSharp.Model.Layer;
 using SkiaSharp;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     internal class ShapeContent : IPathContent
     {

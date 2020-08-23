@@ -15,7 +15,7 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public class JsonReader : JsonTextReader
     {

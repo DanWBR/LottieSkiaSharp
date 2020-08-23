@@ -12,9 +12,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Numerics;
-using LottieUWP.Utils;
+using LottieSharp.Utils;
 
-namespace LottieUWP.Value
+namespace LottieSharp.Value
 {
     // ReSharper disable once UnusedMember.Global
     public class LottieInterpolatedPointValue : LottieInterpolatedValue<Vector2>

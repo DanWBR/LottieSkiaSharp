@@ -11,9 +11,9 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-using LottieUWP.Animation.Keyframe;
+using LottieSharp.Animation.Keyframe;
 
-namespace LottieUWP.Model.Animatable
+namespace LottieSharp.Model.Animatable
 {
     public interface IAnimatableValue<out TK, TA>
     {

@@ -12,13 +12,13 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using SkiaSharp;
-using LottieUWP.Animation.Content;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Value;
-using LottieUWP.Expansion;
+using LottieSharp.Animation.Content;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Value;
+using LottieSharp.Expansion;
 using System;
 
-namespace LottieUWP.Model.Layer
+namespace LottieSharp.Model.Layer
 {
     internal class ImageLayer : BaseLayer
     {

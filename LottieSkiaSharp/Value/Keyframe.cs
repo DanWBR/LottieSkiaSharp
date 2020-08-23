@@ -13,13 +13,13 @@
 //   limitations under the License.
 using System.Numerics;
 
-namespace LottieUWP.Value
+namespace LottieSharp.Value
 {
     public class Keyframe<T>
     {
         private readonly LottieComposition _composition;
         public T StartValue { get; }
-        public T EndValue { get; }
+        public T EndValue { get; internal set; }
         public IInterpolator Interpolator { get; }
         public float? StartFrame { get; }
         public float? EndFrame { get; internal set; }

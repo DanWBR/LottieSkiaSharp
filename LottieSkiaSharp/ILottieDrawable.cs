@@ -13,7 +13,7 @@
 //   limitations under the License.
 using SkiaSharp;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public interface ILottieDrawable
     {

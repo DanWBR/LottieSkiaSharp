@@ -12,10 +12,10 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Collections.Generic;
-using LottieUWP.Animation.Content;
-using LottieUWP.Model.Layer;
+using LottieSharp.Animation.Content;
+using LottieSharp.Model.Layer;
 
-namespace LottieUWP.Model.Content
+namespace LottieSharp.Model.Content
 {
     public class ShapeGroup : IContentModel
     {

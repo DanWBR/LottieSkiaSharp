@@ -14,9 +14,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using LottieUWP.Utils;
+using LottieSharp.Utils;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public class PerformanceTracker
     {

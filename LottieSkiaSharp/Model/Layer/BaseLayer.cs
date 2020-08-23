@@ -15,13 +15,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using SkiaSharp;
-using LottieUWP.Animation.Content;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Model.Content;
-using LottieUWP.Value;
-using LottieUWP.Expansion;
+using LottieSharp.Animation.Content;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Model.Content;
+using LottieSharp.Value;
+using LottieSharp.Expansion;
 
-namespace LottieUWP.Model.Layer
+namespace LottieSharp.Model.Layer
 {
     public abstract class BaseLayer : IDrawingContent, IKeyPathElement
     {

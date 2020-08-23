@@ -11,7 +11,7 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-namespace LottieUWP.Utils
+namespace LottieSharp.Utils
 {
     /// <summary>
     /// Class to calculate the average in a stream of numbers on a continuous basis.

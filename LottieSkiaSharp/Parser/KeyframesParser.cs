@@ -1,21 +1,9 @@
-﻿//   Copyright 2018 yinyue200.com
-
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-
-//       http://www.apache.org/licenses/LICENSE-2.0
-
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License.
-using System.Collections.Generic;
-using LottieUWP.Value;
+﻿using LottieSharp.Animation.Keyframe;
+using LottieSharp.Value;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
-namespace LottieUWP.Parser
+namespace LottieSharp.Parser
 {
     static class KeyframesParser
     {
@@ -82,10 +70,17 @@ namespace LottieUWP.Parser
             for (int i = 0; i < size - 1; i++)
             {
                 // In the json, the keyframes only contain their starting frame. 
-                keyframes[i].EndFrame = keyframes[i + 1].StartFrame;
+                var keyframe = keyframes[i];
+                Keyframe<TV> nextKeyframe = keyframes[i + 1];
+                keyframe.EndFrame = nextKeyframe.StartFrame;
+                if (keyframe.EndValue == null && nextKeyframe.StartValue != null)
+                {
+                    keyframe.EndValue = nextKeyframe.StartValue;
+                    (keyframe as PathKeyframe)?.CreatePath();
+                }
             }
             var lastKeyframe = keyframes[size - 1];
-            if (lastKeyframe.StartValue == null)
+            if ((lastKeyframe.StartValue == null || lastKeyframe.EndValue == null) && keyframes.Count > 1)
             {
                 // The only purpose the last keyframe has is to provide the end frame of the previous 
                 // keyframe. 

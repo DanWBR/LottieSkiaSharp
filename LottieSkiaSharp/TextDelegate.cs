@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System.Collections.Generic;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     /// <summary>
     /// Extend this class to replace animation text with custom text. This can be useful to handle
@@ -24,7 +24,6 @@ namespace LottieUWP
     public class TextDelegate
     {
         private readonly Dictionary<string, string> _stringMap = new Dictionary<string, string>();
-        private readonly LottieAnimationView _animationView;
         private readonly ILottieDrawable _drawable;
         private bool _cacheText = true;
 
@@ -33,20 +32,12 @@ namespace LottieUWP
         /// </summary>
         internal TextDelegate()
         {
-            _animationView = null;
-            _drawable = null;
-        }
-
-        public TextDelegate(LottieAnimationView animationView)
-        {
-            _animationView = animationView;
             _drawable = null;
         }
 
         public TextDelegate(ILottieDrawable drawable)
         {
             _drawable = drawable;
-            _animationView = null;
         }
 
         /// <summary>

@@ -1,20 +1,7 @@
-﻿//   Copyright 2018 yinyue200.com
-
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-
-//       http://www.apache.org/licenses/LICENSE-2.0
-
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License.
+﻿using LottieSharp.Model;
 using SkiaSharp;
-using LottieUWP.Model;
 
-namespace LottieUWP.Parser
+namespace LottieSharp.Parser
 {
     public class DocumentDataParser : IValueParser<DocumentData>
     {
@@ -29,9 +16,9 @@ namespace LottieUWP.Parser
             int tracking = 0;
             double lineHeight = 0;
             double baselineShift = 0;
-            SKColor fillColor = default;
-            SKColor strokeColor = default;
-            double strokeWidth = 0;
+            SKColor fillColor = SKColors.Transparent;
+            SKColor strokeColor = SKColors.Transparent;
+            int strokeWidth = 0;
             bool strokeOverFill = true;
 
             reader.BeginObject();
@@ -67,7 +54,7 @@ namespace LottieUWP.Parser
                         strokeColor = JsonUtils.JsonToColor(reader);
                         break;
                     case "sw":
-                        strokeWidth = reader.NextDouble();
+                        strokeWidth = reader.NextInt();
                         break;
                     case "of":
                         strokeOverFill = reader.NextBoolean();

@@ -13,7 +13,7 @@
 //   limitations under the License.
 using SkiaSharp;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     /// <summary>
     /// Delegate to handle the loading of bitmaps that are not packaged in the assets of your app.

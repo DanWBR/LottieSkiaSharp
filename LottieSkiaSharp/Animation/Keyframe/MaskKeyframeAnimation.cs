@@ -12,10 +12,10 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Collections.Generic;
-using LottieUWP.Model.Content;
+using LottieSharp.Model.Content;
 using SkiaSharp;
 
-namespace LottieUWP.Animation.Keyframe
+namespace LottieSharp.Animation.Keyframe
 {
     internal class MaskKeyframeAnimation
     {

@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System.Collections.Generic;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     /// <summary>
     /// Content that may want to absorb and take ownership of the content around it.

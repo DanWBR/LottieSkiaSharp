@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System;
 
-namespace LottieUWP.Utils
+namespace LottieSharp.Utils
 {
     public abstract class BaseLottieAnimator : ValueAnimator
     {

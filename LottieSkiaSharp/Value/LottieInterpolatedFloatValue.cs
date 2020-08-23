@@ -11,9 +11,9 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-using LottieUWP.Utils;
+using LottieSharp.Utils;
 
-namespace LottieUWP.Value
+namespace LottieSharp.Value
 {
     // ReSharper disable once UnusedMember.Global
     public class LottieInterpolatedFloatValue : LottieInterpolatedValue<float>

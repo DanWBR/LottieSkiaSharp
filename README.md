@@ -1,7 +1,7 @@
 # LottieSkiaSharp
 Lottie is a mobile library for Android and iOS that parses [Adobe After Effects](http://www.adobe.com/products/aftereffects.html) animations exported as json with [Bodymovin](https://github.com/bodymovin/bodymovin) and renders them natively on mobile!
 
-**This library is a port from the Java code to support the all platform that SkiaSharp support.**
+**This library is a port from the Java code to support the all platform that SkiaSharp support. It is a pure SkiaSharp implementation, and does not rely on any platform features other than an SKCanvas.**
 
 ## Download
 
@@ -34,52 +34,14 @@ Or get in touch on Twitter ([gpeal8](https://twitter.com/gpeal8)) or via lottie@
 
 If you want to reuse an animation such as in each item of a list or load it from a network request JsonObject:
 ```c#
-LottieAnimationView.Composition = await LottieComposition.Factory.FromJsonAsync(jsonObject);
-LottieAnimationView.PlayAnimation();
-```
-
-You can then control the animation or add event handlers:
-```c#
-animationView.AnimatorUpdate += (object sender, ValueAnimator.ValueAnimatorUpdateEventArgs e) => { ... };
-animationView.PlayAnimation();
-...
-if (animationView.IsAnimating) 
-{
-    // Do something.
-}
-...
-animationView.Progress = 0.5f;
-...
-// Custom animation speed or duration.
-ValueAnimator animator = ValueAnimator.OfFloat(0f, 1f);
-animator.Duration = 500;
-animator.Update += (sender, e) => animationView.Progress = e.Animation.AnimatedValue;
-animator.Start();
-...
-animationView.CancelAnimation();
-```
-
-
-Under the hood, `LottieAnimationView` uses `LottieDrawable` to render its animations. If you need to, you can use the the drawable form directly:
-```c#
 LottieDrawable drawable = new LottieDrawable();
 var composition = await LottieComposition.Factory.FromAssetFileNameAsync("Assets/hello-world.json");
 drawable.SetComposition(composition);
 ```
 
-If your animation will be frequently reused, `LottieAnimationView` has an optional caching strategy built in. Use `LottieAnimationView.SetAnimationAsync(string, CacheStrategy)`. `CacheStrategy` can be `Strong`, `Weak`, or `None` to have `LottieAnimationView` hold a strong or weak reference to the loaded and parsed animation. 
-
-You can also use the awaitable version of LottieComposition's asynchronous methods:
-```c#
-var composition = await LottieComposition.Factory.FromAssetFileNameAsync(assetName);
-..
-var composition = await LottieComposition.Factory.FromJsonAsync(jsonObject);
-```
-
 ### Image Support
 You can animate images if your animation is loaded from assets and your image file is in a 
-subdirectory of assets. Just set `ImageAssetsFolder` on `LottieAnimationView` or 
-`LottieDrawable` with the relative folder inside of assets and make sure that the images that 
+subdirectory of assets. Just set `ImageAssetsFolder` on `LottieDrawable` with the relative folder inside of assets and make sure that the images that 
 bodymovin export are in that folder with their names unchanged (should be img_#).
 If you use `LottieDrawable` directly, you must call `RecycleBitmaps` when you are done with it.
 
@@ -217,7 +179,7 @@ class ImageAssetDelegate : IImageAssetDelegate
 4. If you are using your animation in a list, it is recommended to use a CacheStrategy in LottieAnimationView.setAnimation(String, CacheStrategy) so the animations do not have to be deserialized every time.
 
 ## Try it out
-Clone this repository and run the LottieUWP.Sample module to see a bunch of sample animations. The JSON files for them are located in [LottieUWP.Sample/Assets](https://github.com/azchohfi/LottieUWP/tree/master/LottieUWP.Sample/Assets) and the orignal After Effects files are located in [/After Effects Samples](https://github.com/airbnb/lottie-android/tree/master/After%20Effects%20Samples)
+Clone this repository and run the LottieSkiaSharp.Sample module to see a bunch of sample animations. The JSON files for them are located in [LottieUWP.Sample/Assets](https://github.com/azchohfi/LottieUWP/tree/master/LottieUWP.Sample/Assets) and the orignal After Effects files are located in [/After Effects Samples](https://github.com/airbnb/lottie-android/tree/master/After%20Effects%20Samples)
 
 ## Community Contributions
  * [Xamarin bindings](https://github.com/martijn00/LottieXamarin)

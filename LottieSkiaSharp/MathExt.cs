@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public static class MathExt
     {

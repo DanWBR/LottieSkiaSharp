@@ -12,9 +12,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System;
-using LottieUWP.Utils;
+using LottieSharp.Utils;
 
-namespace LottieUWP.Value
+namespace LottieSharp.Value
 {
     /// <summary>
     /// <see cref="Value.LottieValueCallback{T}"/> that provides a value offset from the original animation 

@@ -14,9 +14,9 @@
 using System;
 using System.Numerics;
 using SkiaSharp;
-using LottieUWP.Animation.Content;
+using LottieSharp.Animation.Content;
 
-namespace LottieUWP.Utils
+namespace LottieSharp.Utils
 {
     public static class Utils
     {

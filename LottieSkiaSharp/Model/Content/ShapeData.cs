@@ -14,9 +14,9 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using LottieUWP.Utils;
+using LottieSharp.Utils;
 
-namespace LottieUWP.Model.Content
+namespace LottieSharp.Model.Content
 {
     public class ShapeData
     {

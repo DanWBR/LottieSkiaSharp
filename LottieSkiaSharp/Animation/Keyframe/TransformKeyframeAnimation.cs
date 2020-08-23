@@ -13,12 +13,12 @@
 //   limitations under the License.
 using System;
 using System.Numerics;
-using LottieUWP.Model;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Model.Layer;
-using LottieUWP.Value;
+using LottieSharp.Model;
+using LottieSharp.Model.Animatable;
+using LottieSharp.Model.Layer;
+using LottieSharp.Value;
 
-namespace LottieUWP.Animation.Keyframe
+namespace LottieSharp.Animation.Keyframe
 {
     public class TransformKeyframeAnimation
     {

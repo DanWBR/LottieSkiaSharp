@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System.Collections.Generic;
 
-namespace LottieUWP.Model
+namespace LottieSharp.Model
 {
     public class LruCache<K, V>
     {

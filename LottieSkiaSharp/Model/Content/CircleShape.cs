@@ -12,11 +12,11 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Numerics;
-using LottieUWP.Animation.Content;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Model.Layer;
+using LottieSharp.Animation.Content;
+using LottieSharp.Model.Animatable;
+using LottieSharp.Model.Layer;
 
-namespace LottieUWP.Model.Content
+namespace LottieSharp.Model.Content
 {
     public class CircleShape : IContentModel
     {

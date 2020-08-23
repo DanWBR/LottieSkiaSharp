@@ -15,17 +15,16 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using LottieUWP.Animation.Content;
-using LottieUWP.Manager;
-using LottieUWP.Model;
-using LottieUWP.Model.Layer;
-using LottieUWP.Parser;
-using LottieUWP.Utils;
-using LottieUWP.Value;
+using LottieSharp.Animation.Content;
+using LottieSharp.Manager;
+using LottieSharp.Model;
+using LottieSharp.Model.Layer;
+using LottieSharp.Parser;
+using LottieSharp.Utils;
+using LottieSharp.Value;
 using SkiaSharp;
-using Xamarin.Forms;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     /// <summary>
     /// This can be used to show an lottie animation in any place that would normally take a drawable.
@@ -37,11 +36,11 @@ namespace LottieUWP
     /// of compositions.
     /// </para>
     /// </summary>
-    public class LottieDrawable : ContentView, ILottieDrawable, IAnimatable, IDisposable
+    public class LottieDrawable : ILottieDrawable, IAnimatable, IDisposable
     {
         private Matrix3X3 _matrix = Matrix3X3.CreateIdentity();
         private LottieComposition _composition;
-        private readonly LottieValueAnimator _animator ;
+        private readonly LottieValueAnimator _animator;
         private float _scale = 1f;
 
         private readonly List<Action<LottieComposition>> _lazyCompositionTasks = new List<Action<LottieComposition>>();
@@ -54,11 +53,12 @@ namespace LottieUWP
         private CompositionLayer _compositionLayer;
         private byte _alpha = 255;
         private bool _performanceTrackingEnabled;
-        private CanvasAnimatedControl _canvasControl;
         private bool _forceSoftwareRenderer;
 
         public event EventHandler LottieDrawableLoaded;
         public event EventHandler LottieDrawableUnloaded;
+
+        public SKRect ScaledBounds { get => scaledBounds; private set => scaledBounds = value; }
 
         public void RaiseLottieDrawableLoaded()
         {
@@ -90,44 +90,11 @@ namespace LottieUWP
 
         private void UserControl_Loaded(object sender, EventArgs e)
         {
-            _canvasControl = new CanvasAnimatedControl
-            {
-                ForceSoftwareRenderer = _forceSoftwareRenderer
-            };
-            _canvasControl.Paused = true;
-            _canvasControl.Draw += CanvasControlOnDraw;
-            _canvasControl.Paused = false;
-            _canvasControl.CanvasAnimatedControlLoaded += (s, args) => InvalidateMeasure();
-            Content = _canvasControl;
         }
 
         private void UserControl_Unloaded(object sender, EventArgs e)
         {
-            // Explicitly remove references to allow the Win2D controls to get garbage collected
-            if (_canvasControl != null)
-            {
-                _canvasControl.Paused = true;
-                //_canvasControl.RemoveFromVisualTree();
-                Content = null;
-                _canvasControl = null;
-            }
-
-            //if (_bitmapCanvas != null)
-            //{
-            //    _bitmapCanvas.Dispose();
-            //    _bitmapCanvas = null;
-            //}
-
             ClearComposition();
-        }
-
-        public void ForceSoftwareRenderer(bool force)
-        {
-            _forceSoftwareRenderer = force;
-            if (_canvasControl != null)
-            {
-                _canvasControl.ForceSoftwareRenderer = force;
-            }
         }
 
         /// <summary>
@@ -290,6 +257,8 @@ namespace LottieUWP
             InvalidateSelf();
         }
         bool shouldrefresh = false;
+        private SKRect scaledBounds;
+
         void ILottieDrawable.InvalidateSelf()
         {
             shouldrefresh = true;
@@ -302,7 +271,6 @@ namespace LottieUWP
         public void InvalidateSelf()
         {
             shouldrefresh = false;
-            _canvasControl?.Invalidate();
         }
 
         public void SetAlpha(byte alpha)
@@ -315,32 +283,34 @@ namespace LottieUWP
             return _alpha;
         }
 
-        //public int Opacity
-        //{
-        //    get
-        //    {
-        //        return PixelFormat.TRANSLUCENT;
-        //    }
-        //}
-
-        private void CanvasControlOnDraw(object canvasControl, DrawEventArgs args)
+        public void Draw(SKCanvas canvas, SKRect rect = default)
         {
             lock (this)
             {
-                var ancanvasControl = (CanvasAnimatedControl)canvasControl;
-                //if (_bitmapCanvas == null)
-                //{
-                //    return;
-                //}
-
-                Draw( args.Surface, _compositionLayer, _composition?.Bounds ?? default(SKRect), _scale, _alpha, _matrix, args.Surface.Canvas.LocalClipBounds.Width, args.Surface.Canvas.LocalClipBounds.Height);
+                Draw(canvas, _compositionLayer, _composition?.Bounds ?? default, _scale, _alpha, _matrix, out scaledBounds, rect);
             }
         }
 
-        private static void Draw(SKSurface bitmapCanvas, CompositionLayer compositionLayer, SKRect bounds, float scale, byte alpha, Matrix3X3 matrix, double width, double height)
+        public void Draw(SKSurface surface, SKRect rect = default)
         {
-            bitmapCanvas.Canvas.Clear(SKColors.Transparent);
+            lock (this)
+            {
+                Draw(surface.Canvas, _compositionLayer, _composition?.Bounds ?? default, _scale, _alpha, _matrix, out scaledBounds, rect);
+            }
+        }
+
+        private static void Draw(SKCanvas canvas,
+            CompositionLayer compositionLayer,
+            SKRect bounds,
+            float scale,
+            byte alpha,
+            Matrix3X3 matrix,
+            out SKRect scaled,
+            SKRect rect = default)
+        {
             LottieLog.BeginSection("Drawable.Draw");
+
+            scaled = default;
             if (compositionLayer == null)
             {
                 return;
@@ -348,44 +318,46 @@ namespace LottieUWP
 
             var localScale = scale;
             float extraScale = 1f;
+            float maxScale;
+            if (rect == default)
+            {
+                rect = canvas.LocalClipBounds;
+            }
 
-            float maxScale = GetMaxScale(bitmapCanvas.Canvas, bounds);
+            maxScale = GetMaxScale(rect, bounds);
+
+
             if (localScale > maxScale)
             {
                 localScale = maxScale;
-                extraScale = scale / localScale;
+                extraScale = localScale / scale;
             }
 
-            if (extraScale > 1)
+            if (extraScale != 1)
             {
-                // This is a bit tricky... 
-                // We can't draw on a canvas larger than ViewConfiguration.get(context).getScaledMaximumDrawingCacheSize() 
-                // which works out to be roughly the size of the screen because Android can't generate a 
-                // bitmap large enough to render to. 
-                // As a result, we cap the scale such that it will never be wider/taller than the screen 
-                // and then only render in the top left corner of the canvas. We then use extraScale 
-                // to scale up the rest of the scale. However, since we rendered the animation to the top 
-                // left corner, we need to scale up and translate the canvas to zoom in on the top left 
-                // corner. 
-                bitmapCanvas.Canvas.Save();
-                float halfWidth = (float)bounds.Width / 2f;
-                float halfHeight = (float)bounds.Height / 2f;
-                float scaledHalfWidth = halfWidth * localScale;
-                float scaledHalfHeight = halfHeight * localScale;
-                bitmapCanvas.Canvas.Translate(
-                    scale * halfWidth - scaledHalfWidth,
-                    scale * halfHeight - scaledHalfHeight);
-                bitmapCanvas.Canvas.Scale(extraScale, extraScale, scaledHalfWidth, scaledHalfHeight);
+                canvas.Save();
             }
+            if (rect != default)
+            {
+                float left = rect.Left;
+                float top = rect.Top;
+                canvas.Translate(left, top);
+            }
+            canvas.Scale(extraScale, extraScale);
 
             matrix.Reset();
-            matrix = MatrixExt.PreScale(matrix, localScale, localScale);
-            compositionLayer.Draw(bitmapCanvas.Canvas, matrix, alpha);
+            matrix = MatrixExt.PreScale(matrix, scale, scale);
+
+            compositionLayer.Draw(canvas, matrix, alpha);
             LottieLog.EndSection("Drawable.Draw");
 
-            if (extraScale > 1)
+            matrix = MatrixExt.PreScale(matrix, extraScale, extraScale);
+            compositionLayer.GetBounds(out SKRect compositionBounds, matrix);
+            scaled = SKRect.Create(rect.Left, rect.Top, compositionBounds.Width + compositionBounds.Left, compositionBounds.Height + compositionBounds.Top);
+
+            if (extraScale != 1)
             {
-                bitmapCanvas.Canvas.Restore();
+                canvas.Restore();
             }
         }
 
@@ -664,8 +636,8 @@ namespace LottieUWP
         /// <summary>
         /// Defines what this animation should do when it reaches the end. This
         /// setting is applied only when the repeat count is either greater than
-        /// 0 or <see cref="LottieUWP.RepeatMode.Infinite"/>. Defaults to <see cref="LottieUWP.RepeatMode.Restart"/>.
-        /// Return either one of <see cref="LottieUWP.RepeatMode.Reverse"/> or <see cref="LottieUWP.RepeatMode.Restart"/>
+        /// 0 or <see cref="LottieSharp.RepeatMode.Infinite"/>. Defaults to <see cref="LottieSharp.RepeatMode.Restart"/>.
+        /// Return either one of <see cref="LottieSharp.RepeatMode.Reverse"/> or <see cref="LottieSharp.RepeatMode.Restart"/>
         /// </summary>
         /// <param name="value"><seealso cref="RepeatMode"/></param>
         public RepeatMode RepeatMode
@@ -677,12 +649,12 @@ namespace LottieUWP
         /// <summary>
         /// Sets how many times the animation should be repeated. If the repeat 
         /// count is 0, the animation is never repeated. If the repeat count is 
-        /// greater than 0 or <see cref="LottieUWP.RepeatMode.Infinite"/>, the repeat mode will be taken 
+        /// greater than 0 or <see cref="LottieSharp.RepeatMode.Infinite"/>, the repeat mode will be taken 
         /// into account. The repeat count is 0 by default.
         /// 
         /// Count the number of times the animation should be repeated
         /// 
-        /// Return the number of times the animation should repeat, or <see cref="LottieUWP.RepeatMode.Infinite"/>
+        /// Return the number of times the animation should repeat, or <see cref="LottieSharp.RepeatMode.Infinite"/>
         /// </summary>
         public int RepeatCount
         {
@@ -730,7 +702,6 @@ namespace LottieUWP
                 lock (this)
                 {
                     UpdateBounds();
-                    InvalidateMeasure();
                     InvalidateSelf();
                 }
             }
@@ -768,11 +739,11 @@ namespace LottieUWP
             {
                 return;
             }
-            WidthRequest = (int)(_composition.Bounds.Width * _scale);
-            HeightRequest = (int)(_composition.Bounds.Height * _scale);
+
+            Size = new SKSize(_composition.Bounds.Width * _scale, _composition.Bounds.Height * _scale);
             //_bitmapCanvas?.Dispose();
             //_bitmapCanvas = new SKSurface(Width, Height);
-            
+
         }
 
         public void CancelAnimation()
@@ -924,9 +895,29 @@ namespace LottieUWP
             }
         }
 
+        public SKSize Size { get; private set; }
+
         public SKTypeface GetTypeface(string fontFamily, SKTypefaceStyle style)
         {
-            return  SKTypeface.FromFamilyName(fontFamily, style);
+            var width = SKFontStyleWidth.Normal;
+            var weight = SKFontStyleWeight.Normal;
+            var slant = SKFontStyleSlant.Upright;
+
+            switch (style)
+            {
+                case SKTypefaceStyle.Bold:
+                    weight = SKFontStyleWeight.Bold;
+                    break;
+                case SKTypefaceStyle.BoldItalic:
+                    weight = SKFontStyleWeight.Bold;
+                    slant = SKFontStyleSlant.Italic;
+                    break;
+                case SKTypefaceStyle.Italic:
+                    slant = SKFontStyleSlant.Italic;
+                    break;
+            }
+
+            return SKTypeface.FromFamilyName(fontFamily, weight, width, slant);
         }
 
 
@@ -940,6 +931,13 @@ namespace LottieUWP
             var maxScaleY = (float)canvas.LocalClipBounds.Height / (float)bounds.Height;
             return Math.Min(maxScaleX, maxScaleY);
         }
+        private static float GetMaxScale(SKRect rect, SKRect bounds)
+        {
+            var maxScaleX = (float)rect.Width / (float)bounds.Width;
+            var maxScaleY = (float)rect.Height / (float)bounds.Height;
+            return Math.Min(maxScaleX, maxScaleY);
+        }
+
         public SKBitmap GetImageAsset(string id)
         {
             return ImageAssetManager?.BitmapForId(id);

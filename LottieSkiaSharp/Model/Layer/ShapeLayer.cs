@@ -13,10 +13,10 @@
 //   limitations under the License.
 using System.Collections.Generic;
 using SkiaSharp;
-using LottieUWP.Animation.Content;
-using LottieUWP.Model.Content;
+using LottieSharp.Animation.Content;
+using LottieSharp.Model.Content;
 
-namespace LottieUWP.Model.Layer
+namespace LottieSharp.Model.Layer
 {
     internal class ShapeLayer : BaseLayer
     {

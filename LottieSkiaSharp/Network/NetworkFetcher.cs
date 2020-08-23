@@ -21,7 +21,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.Threading;
 
-namespace LottieUWP.Network
+namespace LottieSharp.Network
 {
     public class NetworkFetcher
     {

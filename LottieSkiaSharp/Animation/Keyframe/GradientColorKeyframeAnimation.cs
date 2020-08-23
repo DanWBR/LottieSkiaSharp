@@ -13,10 +13,10 @@
 //   limitations under the License.
 using System.Collections.Generic;
 using SkiaSharp;
-using LottieUWP.Model.Content;
-using LottieUWP.Value;
+using LottieSharp.Model.Content;
+using LottieSharp.Value;
 
-namespace LottieUWP.Animation.Keyframe
+namespace LottieSharp.Animation.Keyframe
 {
     internal class GradientColorKeyframeAnimation : KeyframeAnimation<GradientColor>
     {

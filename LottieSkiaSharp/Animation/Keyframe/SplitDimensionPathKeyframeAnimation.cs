@@ -11,11 +11,11 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-using LottieUWP.Value;
+using LottieSharp.Value;
 using System.Collections.Generic;
 using System.Numerics;
 
-namespace LottieUWP.Animation.Keyframe
+namespace LottieSharp.Animation.Keyframe
 {
     internal class SplitDimensionPathKeyframeAnimation : BaseKeyframeAnimation<Vector2?, Vector2?>
     {

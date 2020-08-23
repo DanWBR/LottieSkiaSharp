@@ -12,12 +12,12 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Numerics;
-using LottieUWP.Animation.Content;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Model.Content;
-using LottieUWP.Model.Layer;
+using LottieSharp.Animation.Content;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Model.Content;
+using LottieSharp.Model.Layer;
 
-namespace LottieUWP.Model.Animatable
+namespace LottieSharp.Model.Animatable
 {
     public class AnimatableTransform : IModifierContent, IContentModel
     {

@@ -1,23 +1,11 @@
-﻿//   Copyright 2018 yinyue200.com
-
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-
-//       http://www.apache.org/licenses/LICENSE-2.0
-
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License.
+﻿using LottieSharp.Model.Animatable;
+using LottieSharp.Value;
+using Newtonsoft.Json;
+using SkiaSharp;
 using System.Diagnostics;
 using System.Numerics;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Value;
-using Newtonsoft.Json;
 
-namespace LottieUWP.Parser
+namespace LottieSharp.Parser
 {
     public static class AnimatableTransformParser
     {
@@ -67,6 +55,14 @@ namespace LottieUWP.Parser
                         break;
                     case "r":
                         rotation = AnimatableValueParser.ParseFloat(reader, composition, false);
+                        if (rotation.Keyframes.Count == 0)
+                        {
+                            rotation.Keyframes.Add(new Keyframe<float?>(composition, 0f, 0f, null, 0f, composition.EndFrame));
+                        }
+                        else if (rotation.Keyframes[0].StartValue == null)
+                        {
+                            rotation.Keyframes[0] = new Keyframe<float?>(composition, 0f, 0f, null, 0f, composition.EndFrame);
+                        }
                         break;
                     case "o":
                         opacity = AnimatableValueParser.ParseInteger(reader, composition);

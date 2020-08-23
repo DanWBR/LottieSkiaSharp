@@ -14,7 +14,7 @@
 using System;
 using SkiaSharp;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public static class RectExt
     {

@@ -12,13 +12,13 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using SkiaSharp;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Model;
-using LottieUWP.Model.Content;
-using LottieUWP.Model.Layer;
-using LottieUWP.Value;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Model;
+using LottieSharp.Model.Content;
+using LottieSharp.Model.Layer;
+using LottieSharp.Value;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     internal class StrokeContent : BaseStrokeContent
     {

@@ -12,9 +12,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Numerics;
-using LottieUWP.Animation.Keyframe;
+using LottieSharp.Animation.Keyframe;
 
-namespace LottieUWP.Model.Animatable
+namespace LottieSharp.Model.Animatable
 {
     internal class AnimatableSplitDimensionPathValue : IAnimatableValue<Vector2?, Vector2?>
     {

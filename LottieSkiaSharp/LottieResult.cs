@@ -14,7 +14,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     /// <summary>
     /// Contains class to hold the resulting value of an async task or an exception if it failed.

@@ -20,10 +20,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using SkiaSharp;
-using LottieUWP.Model;
-using LottieUWP.Model.Layer;
+using LottieSharp.Model;
+using LottieSharp.Model.Layer;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     /// <summary>
     /// After Effects/Bodymovin composition model. This is the serialized model from which the

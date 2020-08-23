@@ -14,7 +14,7 @@
 using System;
 using SkiaSharp;
 
-namespace LottieUWP.Utils
+namespace LottieSharp.Utils
 {
     /// <summary>
     /// Use this instead of ArgbEvaluator because it interpolates through the gamma color

@@ -15,11 +15,11 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using SkiaSharp;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Model.Content;
-using LottieUWP.Model.Layer;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Model.Content;
+using LottieSharp.Model.Layer;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     public class GradientStrokeContent : BaseStrokeContent
     {

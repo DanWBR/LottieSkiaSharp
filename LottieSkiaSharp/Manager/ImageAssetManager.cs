@@ -19,7 +19,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SkiaSharp;
 
-namespace LottieUWP.Manager
+namespace LottieSharp.Manager
 {
     internal class ImageAssetManager : IDisposable
     {

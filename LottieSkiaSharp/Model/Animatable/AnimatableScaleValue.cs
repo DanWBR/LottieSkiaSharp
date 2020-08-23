@@ -12,10 +12,10 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Collections.Generic;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Value;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Value;
 
-namespace LottieUWP.Model.Animatable
+namespace LottieSharp.Model.Animatable
 {
     public class AnimatableScaleValue : BaseAnimatableValue<ScaleXy, ScaleXy>
     {

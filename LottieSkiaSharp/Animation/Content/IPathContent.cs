@@ -12,7 +12,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using SkiaSharp;
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     internal interface IPathContent : IContent
     {

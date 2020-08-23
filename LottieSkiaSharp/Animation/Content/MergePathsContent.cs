@@ -12,11 +12,11 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Collections.Generic;
-using LottieUWP.Model.Content;
+using LottieSharp.Model.Content;
 using SkiaSharp;
-using LottieUWP.Expansion;
+using LottieSharp.Expansion;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     internal class MergePathsContent : IPathContent, IGreedyContent
     {

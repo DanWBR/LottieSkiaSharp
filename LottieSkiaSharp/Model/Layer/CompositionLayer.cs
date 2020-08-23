@@ -14,11 +14,11 @@
 using System;
 using System.Collections.Generic;
 using SkiaSharp;
-using LottieUWP.Animation.Content;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Value;
+using LottieSharp.Animation.Content;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Value;
 
-namespace LottieUWP.Model.Layer
+namespace LottieSharp.Model.Layer
 {
     internal class CompositionLayer : BaseLayer
     {

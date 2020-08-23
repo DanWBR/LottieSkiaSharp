@@ -14,16 +14,16 @@
 using System;
 using System.Collections.Generic;
 using SkiaSharp;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Model;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Model.Content;
-using LottieUWP.Model.Layer;
-using LottieUWP.Utils;
-using LottieUWP.Value;
-using LottieUWP.Expansion;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Model;
+using LottieSharp.Model.Animatable;
+using LottieSharp.Model.Content;
+using LottieSharp.Model.Layer;
+using LottieSharp.Utils;
+using LottieSharp.Value;
+using LottieSharp.Expansion;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     public abstract class BaseStrokeContent : IDrawingContent, IKeyPathElementContent
     {

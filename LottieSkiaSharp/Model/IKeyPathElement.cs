@@ -12,9 +12,9 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Collections.Generic;
-using LottieUWP.Value;
+using LottieSharp.Value;
 
-namespace LottieUWP.Model
+namespace LottieSharp.Model
 {
     /// <summary>
     /// Any item that can be a part of a <see cref="KeyPath"/> should implement this.

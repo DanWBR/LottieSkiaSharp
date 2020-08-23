@@ -11,10 +11,10 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-using LottieUWP.Model;
-using LottieUWP.Network;
-using LottieUWP.Parser;
-using LottieUWP.Utils;
+using LottieSharp.Model;
+using LottieSharp.Network;
+using LottieSharp.Parser;
+using LottieSharp.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.Threading;
 using SkiaSharp;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     /// <summary>
     /// Helpers to create or cache a LottieComposition.

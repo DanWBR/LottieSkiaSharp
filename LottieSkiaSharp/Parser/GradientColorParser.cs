@@ -1,23 +1,10 @@
-﻿//   Copyright 2018 yinyue200.com
-
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-
-//       http://www.apache.org/licenses/LICENSE-2.0
-
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License.
-using System.Collections.Generic;
-using SkiaSharp;
-using LottieUWP.Model.Content;
-using LottieUWP.Utils;
+﻿using LottieSharp.Model.Content;
+using LottieSharp.Utils;
 using Newtonsoft.Json;
+using SkiaSharp;
+using System.Collections.Generic;
 
-namespace LottieUWP.Parser
+namespace LottieSharp.Parser
 {
     public class GradientColorParser : IValueParser<GradientColor>
     {
@@ -98,7 +85,7 @@ namespace LottieUWP.Parser
                         break;
                     case 3:
                         byte b = (byte)(value * 255);
-                        colors[colorIndex] = new SKColor(r, g, b,255);
+                        colors[colorIndex] = new SKColor(r, g, b, (byte)255);
                         break;
                 }
             }
@@ -145,10 +132,10 @@ namespace LottieUWP.Parser
             for (int i = 0; i < gradientColor.Size; i++)
             {
                 SKColor color = gradientColor.Colors[i];
-                color = new SKColor(
+                color = new SKColor(GetOpacityAtPosition(gradientColor.Positions[i], positions, opacities),
                     color.Red,
                     color.Green,
-                    color.Blue, GetOpacityAtPosition(gradientColor.Positions[i], positions, opacities)
+                    color.Blue
                 );
                 gradientColor.Colors[i] = color;
             }

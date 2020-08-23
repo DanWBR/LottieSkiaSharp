@@ -17,7 +17,7 @@ using System.Linq;
 using System.Numerics;
 using SkiaSharp;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public class PathInterpolator : IInterpolator
     {

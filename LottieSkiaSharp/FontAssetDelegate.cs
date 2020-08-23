@@ -12,7 +12,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using SkiaSharp;
-namespace LottieUWP
+namespace LottieSharp
 {
     /// <summary>
     /// Delegate to handle the loading of fonts that are not packaged in the assets of your app or don't

@@ -19,7 +19,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LottieUWP.Network
+namespace LottieSharp.Network
 {
     /// <summary>
     /// Helper class to save and restore animations fetched from an URL to the app disk cache.

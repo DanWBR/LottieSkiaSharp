@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System.Collections.Generic;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     internal static class HashMapHelperClass
     {

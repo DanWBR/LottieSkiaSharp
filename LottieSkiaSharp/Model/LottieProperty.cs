@@ -11,7 +11,7 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-namespace LottieUWP.Model
+namespace LottieSharp.Model
 {
     /// <summary>
     /// Property values are the same type as the generic type of their corresponding
@@ -29,13 +29,13 @@ namespace LottieUWP.Model
     /// Fill:
     ///    <see cref="Color"/> (non-gradient)
     ///    <see cref="Opacity"/>
-    ///    <see cref="LottieUWP.ColorFilter"/>
+    ///    <see cref="LottieSharp.ColorFilter"/>
     ///
     /// Stroke:
     ///    <see cref="Color"/> (non-gradient)
     ///    <see cref="StrokeWidth"/>
     ///    <see cref="Opacity"/>
-    ///    <see cref="LottieUWP.ColorFilter"/>
+    ///    <see cref="LottieSharp.ColorFilter"/>
     ///
     /// Ellipse:
     ///    <see cref="Position"/>

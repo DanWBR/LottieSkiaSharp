@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System.Collections.Generic;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     public interface IContent
     {

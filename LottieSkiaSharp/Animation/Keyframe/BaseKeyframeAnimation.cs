@@ -13,9 +13,9 @@
 //   limitations under the License.
 using System;
 using System.Collections.Generic;
-using LottieUWP.Value;
+using LottieSharp.Value;
 
-namespace LottieUWP.Animation.Keyframe
+namespace LottieSharp.Animation.Keyframe
 {
     public interface IBaseKeyframeAnimation
     {

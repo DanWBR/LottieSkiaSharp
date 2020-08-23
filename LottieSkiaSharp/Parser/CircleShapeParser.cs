@@ -1,21 +1,9 @@
-﻿//   Copyright 2018 yinyue200.com
+﻿using System.Numerics;
+using LottieSharp.Model.Animatable;
+using LottieSharp.Model.Content;
+using SkiaSharp;
 
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-
-//       http://www.apache.org/licenses/LICENSE-2.0
-
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License.
-using System.Numerics;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Model.Content;
-
-namespace LottieUWP.Parser
+namespace LottieSharp.Parser
 {
     static class CircleShapeParser
     {
@@ -40,12 +28,12 @@ namespace LottieUWP.Parser
                     case "s":
                         size = AnimatableValueParser.ParsePoint(reader, composition);
                         break;
-                    case "hd":
-                        hidden = reader.NextBoolean();
-                        break;
                     case "d":
                         // "d" is 2 for normal and 3 for reversed. 
                         reversed = reader.NextInt() == 3;
+                        break;
+                    case "hd":
+                        hidden = reader.NextBoolean();
                         break;
                     default:
                         reader.SkipValue();

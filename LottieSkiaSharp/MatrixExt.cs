@@ -15,9 +15,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Numerics;
-using LottieUWP.Expansion;
+using LottieSharp.Expansion;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public static class MatrixExt
     {

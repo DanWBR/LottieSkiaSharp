@@ -13,11 +13,11 @@
 //   limitations under the License.
 using System;
 using System.Collections.Generic;
-using LottieUWP.Model;
-using LottieUWP.Model.Content;
+using LottieSharp.Model;
+using LottieSharp.Model.Content;
 using SkiaSharp;
 
-namespace LottieUWP.Utils
+namespace LottieSharp.Utils
 {
     internal static class MiscUtils
     {

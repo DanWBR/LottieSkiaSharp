@@ -12,12 +12,12 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Collections.Generic;
-using LottieUWP.Animation.Content;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Model.Layer;
+using LottieSharp.Animation.Content;
+using LottieSharp.Model.Animatable;
+using LottieSharp.Model.Layer;
 using SkiaSharp;
 
-namespace LottieUWP.Model.Content
+namespace LottieSharp.Model.Content
 {
     public class ShapeStroke : IContentModel
     {

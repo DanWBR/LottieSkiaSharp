@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System.Diagnostics;
 
-namespace LottieUWP.Network
+namespace LottieSharp.Network
 {
     /// <summary>
     /// Helpers for known Lottie file types.

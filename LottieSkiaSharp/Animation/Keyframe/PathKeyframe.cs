@@ -11,27 +11,35 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-using LottieUWP.Value;
+using LottieSharp.Value;
 using SkiaSharp;
 using System.Numerics;
 
-namespace LottieUWP.Animation.Keyframe
+namespace LottieSharp.Animation.Keyframe
 {
     public class PathKeyframe : Keyframe<Vector2?>
     {
+        private readonly Keyframe<Vector2?> _pointKeyFrame;
+
         public PathKeyframe(LottieComposition composition, Keyframe<Vector2?> keyframe)
             : base(composition, keyframe.StartValue, keyframe.EndValue, keyframe.Interpolator, keyframe.StartFrame, keyframe.EndFrame)
+        {
+            _pointKeyFrame = keyframe;
+            CreatePath();
+        }
+
+        internal void CreatePath()
         {
             var equals = EndValue != null && StartValue != null && StartValue.Equals(EndValue.Value);
             if (EndValue != null && !equals)
             {
-                Path = Utils.Utils.CreatePath(StartValue.Value, EndValue.Value, keyframe.PathCp1, keyframe.PathCp2);
+                Path = Utils.Utils.CreatePath(StartValue.Value, EndValue.Value, _pointKeyFrame.PathCp1, _pointKeyFrame.PathCp2);
             }
         }
 
         /// <summary>
         /// This will be null if the startValue and endValue are the same.
         /// </summary>
-        internal SKPath Path { get; }
+        internal SKPath Path { get; private set; }
     }
 }

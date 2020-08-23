@@ -1,24 +1,11 @@
-﻿//   Copyright 2018 yinyue200.com
-
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-
-//       http://www.apache.org/licenses/LICENSE-2.0
-
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License.
-using System.Collections.Generic;
+﻿using LottieSharp.Model.Animatable;
+using LottieSharp.Model.Content;
+using LottieSharp.Model.Layer;
+using LottieSharp.Value;
 using SkiaSharp;
-using LottieUWP.Value;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Model.Content;
-using LottieUWP.Model.Layer;
+using System.Collections.Generic;
 
-namespace LottieUWP.Parser
+namespace LottieSharp.Parser
 {
     public static class LayerParser
     {
@@ -30,15 +17,13 @@ namespace LottieUWP.Parser
 
         public static Layer Parse(JsonReader reader, LottieComposition composition)
         {
-            // This should always be set by After Effects. However, if somebody wants to minify 
-            // and optimize their json, the name isn't critical for most cases so it can be removed. 
-            string layerName = "UNSET";
+            string layerName = null;
             Layer.LayerType layerType = Layer.LayerType.Unknown;
             string refId = null;
             long layerId = 0;
             int solidWidth = 0;
             int solidHeight = 0;
-            SKColor solidColor = default;
+            SKColor solidColor = SKColors.Transparent;
             int preCompWidth = 0;
             int preCompHeight = 0;
             long parentId = -1;
@@ -47,7 +32,6 @@ namespace LottieUWP.Parser
             float inFrame = 0f;
             float outFrame = 0f;
             string cl = null;
-            bool hidden = false;
 
             Layer.MatteType matteType = Layer.MatteType.None;
             AnimatableTransform transform = null;
@@ -59,6 +43,8 @@ namespace LottieUWP.Parser
             List<IContentModel> shapes = new List<IContentModel>();
 
             reader.BeginObject();
+
+            bool hidden = false;
             while (reader.HasNext())
             {
                 switch (reader.NextName())

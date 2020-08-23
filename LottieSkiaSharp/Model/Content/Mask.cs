@@ -11,9 +11,9 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-using LottieUWP.Model.Animatable;
+using LottieSharp.Model.Animatable;
 
-namespace LottieUWP.Model.Content
+namespace LottieSharp.Model.Content
 {
     public class Mask
     {

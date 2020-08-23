@@ -12,15 +12,15 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 using System.Numerics;
-using LottieUWP.Animation.Content;
-using LottieUWP.Model.Animatable;
-using LottieUWP.Model.Layer;
+using LottieSharp.Animation.Content;
+using LottieSharp.Model.Animatable;
+using LottieSharp.Model.Layer;
 
-namespace LottieUWP.Model.Content
+namespace LottieSharp.Model.Content
 {
     public class RectangleShape : IContentModel
     {
-        public RectangleShape(string name, IAnimatableValue<Vector2?, Vector2?> position, AnimatablePointValue size, AnimatableFloatValue cornerRadius)
+        public RectangleShape(string name, IAnimatableValue<Vector2?, Vector2?> position, AnimatablePointValue size, AnimatableFloatValue cornerRadius, bool hidden)
         {
             Name = name;
             Position = position;

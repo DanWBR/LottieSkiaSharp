@@ -14,15 +14,15 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using LottieUWP.Animation.Keyframe;
-using LottieUWP.Model;
-using LottieUWP.Model.Content;
-using LottieUWP.Model.Layer;
-using LottieUWP.Utils;
-using LottieUWP.Value;
+using LottieSharp.Animation.Keyframe;
+using LottieSharp.Model;
+using LottieSharp.Model.Content;
+using LottieSharp.Model.Layer;
+using LottieSharp.Utils;
+using LottieSharp.Value;
 using SkiaSharp;
 
-namespace LottieUWP.Animation.Content
+namespace LottieSharp.Animation.Content
 {
     internal class PolystarContent : IPathContent, IKeyPathElementContent
     {

@@ -13,10 +13,10 @@
 //   limitations under the License.
 using System.Collections.Generic;
 using SkiaSharp;
-using LottieUWP.Utils;
-using LottieUWP.Value;
+using LottieSharp.Utils;
+using LottieSharp.Value;
 
-namespace LottieUWP.Animation.Keyframe
+namespace LottieSharp.Animation.Keyframe
 {
     internal class ColorKeyframeAnimation : KeyframeAnimation<SKColor?>
     {

@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System.Numerics;
 
-namespace LottieUWP.Model
+namespace LottieSharp.Model
 {
     public class CubicCurveData
     {

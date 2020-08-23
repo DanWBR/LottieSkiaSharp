@@ -13,7 +13,7 @@
 //   limitations under the License.
 using System.Numerics;
 
-namespace LottieUWP
+namespace LottieSharp
 {
     public class Matrix3X3
     {

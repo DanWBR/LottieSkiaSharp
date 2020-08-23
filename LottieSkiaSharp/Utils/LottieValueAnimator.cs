@@ -14,7 +14,7 @@
 using System;
 using System.Diagnostics;
 
-namespace LottieUWP.Utils
+namespace LottieSharp.Utils
 {
     /// <summary>
     /// This is a slightly modified <seealso cref="ValueAnimator"/> that allows us to update start and end values
