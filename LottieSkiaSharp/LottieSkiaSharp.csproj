@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>yinyue200.com, emmaus</Authors>
     <Company />
     <PackageLicenseUrl>https://github.com/yinyue200/LottieSkiaSharp/blob/master/LICENSE</PackageLicenseUrl>
