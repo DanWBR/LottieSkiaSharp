@@ -17,11 +17,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="15.8.168" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
-    <PackageReference Include="SkiaSharp" Version="2.80.1" />
+    <PackageReference Include="SkiaSharp" Version="2.80.2" />
     <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.80.1" />
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.Views" Version="2.80.1" />
-    <PackageReference Include="SkiaSharp.Views.Desktop.Common" Version="2.80.1" />
+    <PackageReference Include="SkiaSharp.Views.Desktop.Common" Version="2.80.2" />
   </ItemGroup>
 </Project>
