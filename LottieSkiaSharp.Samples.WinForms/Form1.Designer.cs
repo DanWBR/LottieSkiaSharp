@@ -37,21 +37,22 @@ namespace LottieSkiaSharp.Samples.WinForms
             this.skglControl1.BackColor = System.Drawing.Color.White;
             this.skglControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skglControl1.Location = new System.Drawing.Point(0, 0);
-            this.skglControl1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.skglControl1.Name = "skglControl1";
-            this.skglControl1.Size = new System.Drawing.Size(800, 450);
+            this.skglControl1.Size = new System.Drawing.Size(300, 189);
             this.skglControl1.TabIndex = 0;
             this.skglControl1.VSync = false;
             this.skglControl1.PaintSurface += new System.EventHandler<SkiaSharp.Views.Desktop.SKPaintGLSurfaceEventArgs>(this.skglControl1_PaintSurface);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(300, 189);
             this.Controls.Add(this.skglControl1);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

@@ -13,7 +13,7 @@ namespace LottieSkiaSharp.Samples.WinForms
         {
             InitializeComponent();
 
-            var json = File.ReadAllText("data.json");
+            var json = File.ReadAllText("102800-blue-circle.json");
             var result = LottieCompositionFactory.FromJsonStringSync(json, "lol");
 
             _lottieDrawable.SetComposition(result.Value);
@@ -39,6 +39,11 @@ namespace LottieSkiaSharp.Samples.WinForms
 
             //
             _lottieDrawable.Draw(e.Surface.Canvas);
+        }
+
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+
         }
     }
 }
